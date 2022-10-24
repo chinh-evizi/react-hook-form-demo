@@ -16,10 +16,10 @@ export default function Login(props: ILoginProps) {
 
     const onSubmit = (e: any) => {
         console.log(e);
-        // dispatch({ type: "GET_AUTH", payload: true })
+        dispatch({ type: "GET_LOGIN", payload: {...e} })
         // history.push("/user")
     }
-    if (state?.isAuthen)
+    if (state?.userLogin?.email)
         return <Redirect to={"/user"} exact />
 
     return (
@@ -30,7 +30,7 @@ export default function Login(props: ILoginProps) {
                     resolver: yupResolver(loginSchema)
                 }}>
                     <HookInput name="email" label="Email" placeholder="Email" />
-                    <HookInput name="password" label="Password" placeholder="Password" />
+                    <HookInput name="password" label="Password" placeholder="Password" type="password"/>
                     <div style={{ marginTop: "30px" }}>
                         <input type="submit" value="submit" />
                     </div>

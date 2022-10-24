@@ -10,7 +10,7 @@ export interface IPrivateRouteProps {
 
 export default function PrivateRoute({ children, path }: IPrivateRouteProps) {
     const { state, dispatch }: any = React.useContext(AuthContext);
-    if (state?.isAuthen) {
+    if (state?.userLogin?.email) {
         return (
             <Route path={path} exact>
                 {children}
